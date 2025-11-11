@@ -42,7 +42,7 @@ class ZteClient():
 
     def __get_login_token(self):
         r1 = r' createHiddenInput\("Frm_Logintoken", "(\d+)"\)'
-        r2 = r' createHiddenInput\("Frm_Loginchecktoken", "(\d+)"\)'
+        r2 = r' createHiddenInput\("Frm_Loginchecktoken", "([A-Za-z0-9]+)"\)'
         response = requests.get(self.baseUrl, timeout=30, verify=False, cookies=self.cookie_jar).text
         login_token = self.__getValue(r1, response, True)
         login_check_token = self.__getValue(r2, response, True)
